@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
+pub fn add_defines(compile_step: *std.Build.Step.Compile) void {
   const target = compile_step.rootModuleTarget();
   const t = target.result;
 
