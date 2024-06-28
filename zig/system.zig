@@ -92,7 +92,7 @@ pub fn add_defines(compile_step: *std.Build.Step.Compile) void {
   var system_version: []const u8 = "9999";
 
   if (isWindows) {
-    switch (t.os.version_range.semver.min.major) {
+    switch (t.os.version_range.windows.min.major) {
       5 => {
         system_version = WHOA_WIN_XP;
       },
