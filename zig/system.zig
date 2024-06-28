@@ -93,8 +93,6 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
   var system_version = "9999";
 
   if (isWindows) {
-    system_version = WHOA_WIN_UNK;
-
     switch (t.os.version_range.semver.min.major) {
       5 => {
         system_version = WHOA_WIN_XP;
@@ -118,15 +116,15 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
 
       10 => {
         system_version = WHOA_WIN_10;
+      },
+
+      else => {
+        system_version = WHOA_WIN_UNK;
       }
     }
   } else if (isDarwin) {
-    system_version = WHOA_MAC_UNK;
-
     switch (t.os.version_range.semver.min.major) {
       10 => {
-        system_version = WHOA_MAC_10_8;
-
         switch (t.os.version_range.semver.min.minor) {
           8 => {
             system_version = WHOA_MAC_10_8;
@@ -158,12 +156,20 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
 
           15 => {
             system_version = WHOA_MAC_10_15;
+          },
+
+          else => {
+            system_version = WHOA_MAC_10_8;
           }
         }
       },
 
       11 => {
         system_version = WHOA_MAC_11_0;
+      },
+
+      else => {
+        system_version = WHOA_MAC_UNK;
       }
     }
   } else if (isLinux) {
