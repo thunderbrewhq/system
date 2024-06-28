@@ -1,0 +1,9 @@
+{
+  .name = "system",
+  .version = "1.0.0",
+  .paths = {
+    "build.zig",
+    "build.zig.zon",
+  },
+  .dependencies = {}
+}
