@@ -1,7 +1,7 @@
 const std = @import("std");
 
 pub fn add_defines(compile_step: *std.Build.Step.Compile) void {
-  const target = compile_step.rootModuleTarget();
+  const target = compile_step.root_module.resolved_target;
   const t = target.result;
 
   // define size of pointer
