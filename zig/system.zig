@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn add_defines(b: *std.Build, compile_step: *std.build.Step.Compile) {
+pub fn add_defines(b: *std.Build, compile_step: *std.build.Step.Compile) void {
   const target = b.standardTargetOptions(.{});
   const t = target.result;
 
@@ -83,6 +83,8 @@ pub fn add_defines(b: *std.Build, compile_step: *std.build.Step.Compile) {
   var system_version = "9999";
 
   if (isWindows) {
+    system_version = WHOA_WIN_UNK;
+
     switch (t.os.semver.min.major) {
       5 => {
         system_version = WHOA_WIN_XP;
