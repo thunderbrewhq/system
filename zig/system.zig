@@ -90,7 +90,7 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
   const WHOA_MAC_11_0 = "1100";
   const WHOA_LINUX_UNK = "9999";
 
-  var system_version = "9999";
+  var system_version: []u8 = "9999";
 
   if (isWindows) {
     switch (t.os.version_range.semver.min.major) {
