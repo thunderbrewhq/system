@@ -1,7 +1,7 @@
 const std = @import("std");
 
-pub fn add_defines(target: std.Build.ResolvedTarget, compile_step: *std.Build.Step.Compile) void {
-  const t = target.result;
+pub fn add_defines(compile_step: *std.Build.Step.Compile) void {
+  const t = compile_step.rootModuleTarget();
 
   // define size of pointer
   var is64Bits = true;
