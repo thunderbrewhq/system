@@ -17,6 +17,12 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
     .x86_64 => {
       is32Bits = false;
       is64Bits = true;
+    },
+
+    // TODO: handle other common architectures
+    else => {
+      is32Bits = false;
+      is64Bits = true;
     }
   }
 
@@ -43,6 +49,10 @@ pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
     },
 
     .linux => {
+      isLinux = true;
+    },
+
+    else => {
       isLinux = true;
     }
   }
