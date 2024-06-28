@@ -1,6 +1,6 @@
 const std = @import("std");
 
-pub fn add_defines(b: *std.Build, compile_step: *std.build.Step.Compile) void {
+pub fn add_defines(b: *std.Build, compile_step: *std.Build.Step.Compile) void {
   const target = b.standardTargetOptions(.{});
   const t = target.result;
 
