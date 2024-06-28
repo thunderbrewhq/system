@@ -92,34 +92,22 @@ pub fn add_defines(compile_step: *std.Build.Step.Compile) void {
   var system_version: []const u8 = "9999";
 
   if (isWindows) {
-    switch (t.os.version_range.windows.min.major) {
-      5 => {
-        system_version = WHOA_WIN_XP;
-      },
+    const r = t.os.version_range.windows;
 
-      6 => {
-        system_version = WHOA_WIN_VISTA;
-      },
-
-      7 => {
-        system_version = WHOA_WIN_7;
-      },
-
-      8 => {
-        system_version = WHOA_WIN_8;
-
-        if (t.os.version_range.semver.min.minor == 1) {
-          system_version = WHOA_WIN_8_1;
-        }
-      },
-
-      10 => {
-        system_version = WHOA_WIN_10;
-      },
-
-      else => {
-        system_version = WHOA_WIN_UNK;
-      }
+    if (r.includesVersion(.xp)) {
+      system_version = WHOA_WIN_XP;
+    } else if (r.includesVersion(.vista)) {
+      system_version = WHOA_WIN_VISTA;
+    } else if (r.includesVersion(.win7)) {
+      system_version = WHOA_WIN_7;
+    } else if (r.includesVersion(.win8)) {
+      system_version = WHOA_WIN_8;
+    } else if (r.includesVersion(.win8_1)) {
+      system_version = WHOA_WIN_8_1;
+    } else if (r.includesVersion(.win10)) {
+      system_version = WHOA_WIN_10;
+    } else {
+      system_version = WHOA_WIN_UNK;
     }
   } else if (isDarwin) {
     switch (t.os.version_range.semver.min.major) {
