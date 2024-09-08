@@ -55,6 +55,9 @@ if(${WHOA_SYSTEM_WIN})
         set(WHOA_SYSTEM_VERSION ${WHOA_WIN_UNK})
     endif()
 
+    # Windows 7 system minimum
+    add_definitions(-D_WIN32_WINNT=0x601)
+
     add_definitions(-DWHOA_SYSTEM_VERSION=${WHOA_SYSTEM_VERSION})
 elseif(${WHOA_SYSTEM_MAC})
     if(${CMAKE_SYSTEM_VERSION} EQUAL "10.8")
