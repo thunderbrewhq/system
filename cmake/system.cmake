@@ -88,3 +88,17 @@ elseif(${WHOA_SYSTEM_LINUX})
 
     add_definitions(-DWHOA_SYSTEM_VERSION=${WHOA_SYSTEM_VERSION})
 endif()
+
+# Toggle assertions
+if(NOT DEFINED WHOA_ASSERTIONS_ENABLED)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(WHOA_ASSERTIONS_ENABLED 1)
+    else()
+        set(WHOA_ASSERTIONS_ENABLED 0)
+    endif()
+endif()
+
+if(WHOA_ASSERTIONS_ENABLED)
+    add_definitions(-DWHOA_ASSERTIONS_ENABLED=1)
+endif()
+
