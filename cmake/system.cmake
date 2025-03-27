@@ -90,15 +90,15 @@ elseif(${WHOA_SYSTEM_LINUX})
 endif()
 
 # Toggle assertions
-if(NOT DEFINED WHOA_ASSERTIONS_ENABLED)
+if(NOT DEFINED WHOA_BUILD_ASSERTIONS)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-        set(WHOA_ASSERTIONS_ENABLED 1)
+        set(WHOA_BUILD_ASSERTIONS 1)
     else()
-        set(WHOA_ASSERTIONS_ENABLED 0)
+        set(WHOA_BUILD_ASSERTIONS 0)
     endif()
 endif()
 
-if(WHOA_ASSERTIONS_ENABLED)
-    add_definitions(-DWHOA_ASSERTIONS_ENABLED=1)
+if(WHOA_BUILD_ASSERTIONS)
+    add_definitions(-DWHOA_BUILD_ASSERTIONS=1)
 endif()
 
